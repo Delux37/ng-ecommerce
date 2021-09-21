@@ -1,0 +1,25 @@
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="onSignup()">
+    <label for="sign-up-username">Enter username: </label>
+    <input 
+    type="text"
+     id="sign-up-username"
+     placeholder="Username"
+     formControlName="username"
+     >
+    <label for="sign-up-password">Enter password: </label>
+    <input 
+    type="sign-up-password" 
+    id="password"
+    placeholder="Password"
+    formControlName="password"
+    >
+    <label for="c-password">Confirm password: </label>
+    <input 
+    type="c-password" 
+    id="password"
+    placeholder="Confirm password"
+    formControlName="c-password"
+    >
+    <input type="submit" value="Sign up">
+    <p class="switch">Already have an account? <a routerLink="/auth/login">Log in instead</a></p>
+</form>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +14,8 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,17 +29,21 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    DropdownComponent
+    DropdownComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'check-out', component: CheckOutComponent },
       { path: 'order-succesful', component: OrderSuccesfulComponent },
-      { path: 'login', component:  LoginComponent},
+      { path: 'auth/login', component:  LoginComponent},
+      { path: 'auth/signup', component:  SignupComponent}, 
       { path: 'admin/products', component:  AdminProductsComponent},
       { path: 'admin/orders', component:  AdminOrdersComponent},
 
