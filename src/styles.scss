@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/fonts';
+@import './styles/pallette';
+@import './styles/reset';
+
+html,
+body {
+    width: 100%;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+}

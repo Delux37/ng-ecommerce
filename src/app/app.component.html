@@ -1,4 +1,20 @@
-
+<nav class="nav">
+    <ul class="nav-list">
+        <li class="nav-list--item">0</li>
+        <li class="nav-list--item"
+        routerLink="./shopping-cart"
+        >Shopping Cart</li>
+        <li class="nav-list--item"
+            (mouseover)="isDropdownShown = true"
+            (mouseout)="isDropdownShown = false"
+        >
+            Username <i class="fas fa-caret-down"></i>
+            <app-dropdown 
+                *ngIf="isDropdownShown"
+            ></app-dropdown>
+        </li>
+    </ul>
+</nav>
 <div class="container">
     <router-outlet></router-outlet>
 </div>
