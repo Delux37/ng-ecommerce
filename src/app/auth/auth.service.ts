@@ -6,6 +6,14 @@ import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+interface currentUser {
+  email: string,
+  _token: string,
+  _tokenExipresIn: string,
+  fbId: string | undefined,
+  isAdmin: boolean | undefined
+}
+
 interface responseData {
   idToken	: string;
   email	: string;
@@ -21,7 +29,7 @@ interface responseData {
   providedIn: 'root'
 })
 export class AuthService {
-  private $currentUser = new Subject<AuthUserModel>();
+  private $currentUser = new Subject<AuthUserModel | null>();
   currentUser = this.$currentUser.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -85,6 +93,10 @@ export class AuthService {
       )
   }
 
+  logout() {
+    this.$currentUser.next(null);
+  }
+
   createCurrUser(
     email: string,
     _token: string,
@@ -93,7 +105,30 @@ export class AuthService {
     isAdmin: boolean | undefined
   ) {
     if(fbId !== undefined && isAdmin !== undefined) {
-      this.$currentUser.next(new AuthUserModel(email, isAdmin, _token, _tokenExipresIn, fbId))
+      const user = new AuthUserModel(email, isAdmin, _token, _tokenExipresIn, fbId)
+      this.$currentUser.next(user);
+      localStorage.setItem('userData', JSON.stringify(user));
     }
   }
+
+  autoLogin() {
+    const temp: {
+      email: string,
+      fbId: string,
+      isAdmin: boolean,
+      _token: string,
+      _tokenExpiresIn: string
+    } = JSON.parse(localStorage.getItem('userData')!);
+    
+    const currUser = new AuthUserModel(temp.email, temp.isAdmin, temp._token, temp._tokenExpiresIn, temp.fbId);
+    
+    if(!currUser.token) {
+      return;
+    }
+
+    this.$currentUser.next(currUser);
+
+    return;
+  }
+
 }

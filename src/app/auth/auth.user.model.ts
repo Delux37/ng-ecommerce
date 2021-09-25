@@ -8,7 +8,7 @@ export class AuthUserModel {
   ) {}
 
   get token() {
-    if (
+     if (
       new Date(new Date().getTime() - +this._tokenExpiresIn * 1000).getTime() <
       new Date().getTime()
     ) {

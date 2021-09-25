@@ -8,19 +8,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   isDropdownShown = false;
-  currentUserSub!: Subscription;
   currentUser: AuthUserModel | null = null;
 
   constructor(private authService: AuthService) {  }
   ngOnInit() {
-    this.currentUserSub = this.authService.currentUser.subscribe(
+    this.authService.currentUser.subscribe(
       res => {this.currentUser = res; console.log(res)})
+    
+    this.authService.autoLogin();
   };
-
-
-  ngOnDestroy() {
-    this.currentUserSub.unsubscribe();
-  }
 }

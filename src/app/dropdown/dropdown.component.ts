@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -5,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent {
   @Input() isAdmin!: boolean;
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
-  ngOnInit(): void {
+  onLogout() {
+    this.auth.logout();
   }
-
 }
