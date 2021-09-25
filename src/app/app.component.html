@@ -5,18 +5,21 @@
         routerLink="shopping-cart"
         >Shopping Cart</li>
         <li 
+        *ngIf="!currentUser"
         class="nav-list--item"
         routerLink="auth/login"
         >Log in</li>
-        <!-- <li class="nav-list--item"
+        <li class="nav-list--item"
+            *ngIf="currentUser"
             (mouseover)="isDropdownShown = true"
-            (mouseout)="isDropdownShown = false"
-        >
-            Username <i class="fas fa-caret-down"></i>
+            (mouseleave)="isDropdownShown = false"
+            >
+            {{ currentUser.email }} <i class="fas fa-caret-down"></i>
             <app-dropdown 
+                [isAdmin]="currentUser.isAdmin"
                 *ngIf="isDropdownShown"
             ></app-dropdown>
-        </li> -->
+        </li>
     </ul>
 </nav>
 <div class="container">

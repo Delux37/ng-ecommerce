@@ -24,7 +24,17 @@ export class LoginComponent implements OnInit {
       this.authService.onLogin({
         email: this.form.get('email')?.value,
         password: this.form.get('password')?.value
-      }).subscribe(res => console.log(res))
+      }).subscribe(
+        res => {
+          this.authService.createCurrUser(
+            res.email,
+            res.idToken,
+            res.expiresIn,
+            res.FBid,
+            res.isAdmin
+          )
+        }
+      )
     }
   }
 }

@@ -1,5 +1,6 @@
+import { AuthUserModel } from './auth.user.model';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
@@ -20,6 +21,8 @@ interface responseData {
   providedIn: 'root'
 })
 export class AuthService {
+  private $currentUser = new Subject<AuthUserModel>();
+  currentUser = this.$currentUser.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -80,5 +83,17 @@ export class AuthService {
         return temp
       })
       )
+  }
+
+  createCurrUser(
+    email: string,
+    _token: string,
+    _tokenExipresIn: string,
+    fbId: string | undefined,
+    isAdmin: boolean | undefined
+  ) {
+    if(fbId !== undefined && isAdmin !== undefined) {
+      this.$currentUser.next(new AuthUserModel(email, isAdmin, _token, _tokenExipresIn, fbId))
+    }
   }
 }

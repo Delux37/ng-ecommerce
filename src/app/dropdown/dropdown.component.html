@@ -1,8 +1,8 @@
 <div class="dropdown">
     <ul class="dropdown_list">
         <li class="dropdown_list--item">My Orders</li>
-        <li class="dropdown_list--item">Manage Orders</li>
-        <li class="dropdown_list--item">Manage Products</li>
+        <li class="dropdown_list--item" *ngIf="isAdmin">Manage Orders</li>
+        <li class="dropdown_list--item" *ngIf="isAdmin">Manage Products</li>
         <li class="dropdown_list--item">Log Out</li>
    </ul>
 </div>

@@ -31,7 +31,8 @@ export class SignupComponent implements OnInit {
           password: this.form.get('password')?.value
         }
       ).subscribe(
-        _ => {
+        res => {
+          console.log(res);
           this.isLoading = false;
           this.showAlert = true;
           this.formStatus = { message: 'Succesfully registered', status: 'success' }
