@@ -1,10 +1,10 @@
 <form autocomplete="off" (ngSubmit)="onLogin()" [formGroup]="form">
-    <label for="username">Enter username: </label>
+    <label for="email">Enter email: </label>
     <input 
     type="text"
-     id="username"
-     placeholder="Username"
-     formControlName="username"
+     id="email"
+     placeholder="Email"
+     formControlName="email"
      >
     <label for="password">Enter password: </label>
     <input 
@@ -13,6 +13,6 @@
     placeholder="Password"
     formControlName="password"
     >
-    <input type="submit" value="login">
+    <input type="submit" value="Login">
     <p class="switch">Dont have an account? <a routerLink="/auth/signup">Sign up instead</a></p>
 </form>

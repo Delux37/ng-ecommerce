@@ -16,6 +16,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AuthAlertComponent } from './auth/auth-alert/auth-alert.component';
+import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SignupComponent } from './auth/signup/signup.component';
     AdminOrdersComponent,
     LoginComponent,
     DropdownComponent,
-    SignupComponent
+    SignupComponent,
+    AuthAlertComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
