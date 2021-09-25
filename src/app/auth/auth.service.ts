@@ -1,3 +1,4 @@
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../models/user.model';
@@ -11,6 +12,8 @@ interface responseData {
   expiresIn	: string;
   localId	: string;
   registere?: boolean;
+  isAdmin?: boolean;
+  FBid?: string;
 }
 
 @Injectable({
@@ -24,14 +27,58 @@ export class AuthService {
     return this.http.post<responseData>(environment.signup, {
       ...user,
       returnSecureToken: true
-    })
+    }).pipe(
+      switchMap(res => {
+        return this.registerOnFirebase(user)
+        .pipe(
+          map(fbRes => {
+            return { fbRes: { ...fbRes }, ...res  }
+          }
+          )
+        )
+      })
+    )
   }
 
   onLogin(user: User): Observable<responseData>  {
     return this.http.post<responseData>(environment.login, {
       ...user,
       returnSecureToken: true
+    }).pipe(
+      mergeMap(authenticatedUser => {
+        return this.getDataFromFirebase(user.email)
+          .pipe(
+            map(
+              fbResponse => {
+                return { ...authenticatedUser, ...fbResponse }
+              }
+            )
+          )
+      })
+    )
+  }
+
+  private registerOnFirebase(user: User)  {
+    return this.http.post<{ name: string }>(environment.firebase + 'users.json', {
+      ...user,
+      isAdmin: Math.random() > .5
     })
   }
 
+  private getDataFromFirebase(email: string): Observable<{ isAdmin: boolean, FBid: string }>{
+    return this.http.get<{ [key: string]: { email: string, isAdmin: boolean } }>(environment.firebase + 'users.json')
+    .pipe(
+      map(fbUsers => {
+        const temp = { isAdmin: false, FBid: 'test' }
+        for(const key in fbUsers){
+          if(fbUsers[key].email === email) {
+            temp.isAdmin = fbUsers[key].isAdmin;
+            temp.FBid = key;
+            break;
+          }
+        }
+        return temp
+      })
+      )
+  }
 }
