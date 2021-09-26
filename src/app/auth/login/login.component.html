@@ -1,18 +1,44 @@
 <form autocomplete="off" (ngSubmit)="onLogin()" [formGroup]="form">
-    <label for="email">Enter email: </label>
-    <input 
-    type="text"
-     id="email"
-     placeholder="Email"
-     formControlName="email"
-     >
-    <label for="password">Enter password: </label>
-    <input 
-    type="password" 
-    id="password"
-    placeholder="Password"
-    formControlName="password"
-    >
-    <input type="submit" value="Login">
-    <p class="switch">Dont have an account? <a routerLink="/auth/signup">Sign up instead</a></p>
+    <div class="form-control">
+        <label for="email">Enter email: </label>
+        <input 
+        type="text"
+         id="email"
+         placeholder="Email"
+         formControlName="email"
+         >
+         <div class="errors"
+         *ngIf="form.get('email')?.touched &&
+         form.get('email')?.invalid"
+         >
+             <p *ngIf="form.get('email')?.errors?.required">Email is required</p>
+             <p *ngIf="form.get('email')?.errors?.email">Invalid email</p>
+         </div>
+    </div>
+    <div class="form-control">
+        <label for="password">Enter password: </label>
+        <input 
+        type="password" 
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+        >
+        <div class="errors"
+        *ngIf="form.get('password')?.touched &&
+        form.get('password')?.invalid"
+        >
+            <p *ngIf="form.get('password')?.errors?.required">Password is required</p>
+            <p *ngIf="form.get('password')?.errors?.minlength">Password should contain at least {{ 
+                form.get('password')?.errors?.minlength?.requiredLength }} symbol</p>
+        </div>
+    </div>
+    <div class="form-control">
+        <input type="submit" value="Login">
+        <p class="switch">Dont have an account? <a routerLink="/auth/signup">Sign up instead</a></p>
+    </div>
+    <app-auth-alert
+        [formStatus] = "formStatus"
+        *ngIf="showAlert"
+        (closeAlert) = "confirmAlert()"
+    ></app-auth-alert>
 </form>

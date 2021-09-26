@@ -1,3 +1,4 @@
 <div class="alert" [ngClass]="formStatus.status">
     <p>{{ formStatus.message }}</p>
+    <button class="confirmAlert" [ngClass]="formStatus.status" (click)="onCloseAlert()">Okay</button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-auth-alert',
@@ -7,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AuthAlertComponent {
   @Input() formStatus!: { message: string, status: 'success' | 'danger' }; 
+  @Output() closeAlert = new EventEmitter();
 
+  onCloseAlert() {
+    this.closeAlert.emit();
+  }
   constructor() { }
 
 }

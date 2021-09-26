@@ -1,6 +1,6 @@
 import { AuthUserModel } from './auth.user.model';
-import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
@@ -70,6 +70,10 @@ export class AuthService {
               return { ...authenticatedUser, ...fbResponse };
             })
           );
+        }),
+        catchError(err => {
+          const newErrMessage = err.error.error.message;
+          return throwError(newErrMessage)
         })
       );
   }

@@ -9,20 +9,28 @@ form {
     label {
         display: block;
     }
-    input {
-        outline: none;
-        border-radius: inherit;
-        border: 1px solid gray;
-        padding: 8px 10px;
-        width: 100%;
-        transition: all .2s ease-in-out;
-        &:not(:last-of-type):focus{
+    .form-control {
+        input {
+            outline: none;
+            border-radius: 10px;
+            border: 1px solid gray;
+            padding: 8px 10px;
+            width: 100%;
+            transition: all .2s ease-in-out;
+            &.ng-touched.ng-invalid{
+                border: 1px solid red;
+                box-shadow: rgba(138, 14, 14, 0.452) 0px 5px 10px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            }
+        }
+
+        &:not(:last-of-type) input:focus{
             border: 1px solid $nice-pink;
         }
         &:not(:last-of-type){
             margin-bottom: 20px;
         }
-        &:last-of-type{
+
+        &:last-of-type input{
             color: #fff;
             background-color: $nice-pink;
             border: none;
@@ -32,10 +40,11 @@ form {
                 background-color: $nice-pink-hovered;
             }
         }
-        &.ng-touched.ng-invalid{
-            border: 1px solid red;
-            box-shadow: rgba(138, 14, 14, 0.452) 0px 5px 10px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        }
+    }
+    .errors {
+        animation: topSlider .3s ease-in-out;
+        color: red;
+        font-size: 14px;
     }
     .switch {
         font-size: 14px;
@@ -45,5 +54,13 @@ form {
             cursor: pointer;
         }
     }
+}
 
+@keyframes topSlider {
+    from {
+        transform: translateY(-5px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }

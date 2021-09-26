@@ -11,3 +11,31 @@
     background-color: #f8d7da;
     color: #721c24;
 }
+
+.confirmAlert {
+    padding: 5px 10px;
+    font-family: inherit;
+    border-radius: 5px;
+    background-color: transparent;
+    margin-top: 5px;
+    transition: all .2s ease-in-out;
+
+}
+
+.confirmAlert.success {
+    border: 1px solid #155724;;;
+    color: #155724;;;
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.confirmAlert.danger {
+    border: 1px solid #721c24;;
+    color: #721c24;;
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}

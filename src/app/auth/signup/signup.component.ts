@@ -1,3 +1,4 @@
+import { AuthValidators } from './../auth.validators';
 import { AuthService } from './../auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -18,9 +19,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      'email': new FormControl(null, Validators.required),
-      'password': new FormControl(null, Validators.required),
-      'c-password': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'pass-group': new FormGroup({
+        'password': new FormControl(null, [Validators.required, Validators.minLength(7)]),
+        'c-password': new FormControl(null, Validators.required),
+      },  { validators: AuthValidators.confirmPass })
     })
   }
   
@@ -43,6 +46,12 @@ export class SignupComponent implements OnInit {
           this.formStatus = { message: 'Failed registered', status: 'danger' }
         }
       )
+    }else {
+      this.showAlert = true;
+      this.formStatus = { message: 'Invalid form.', status: 'danger' }
     }
+  }
+  confirmAlert() {    
+    this.showAlert = false;
   }
 }
