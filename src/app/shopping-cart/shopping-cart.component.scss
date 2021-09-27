@@ -29,6 +29,9 @@
                 font-family: 'Lato', sans-serif;
                 margin-bottom: 5px;
             }
+            &:last-child {
+                border: none;
+            }
             .img-container {
                 width: 100px;
                 height: 100px;
@@ -69,7 +72,11 @@
                 font-size: 18px;
                 font-weight: bold;
             }
-        
+            .total-price {
+                margin-left: auto;
+                font-weight: bold;
+                font-size: 16px;
+            }
         }
     }
     .clear{

@@ -8,7 +8,7 @@
             <div>Quantity</div>
             <div>Price</div>
         </div>
-        <div class="row" *ngFor="let product of products">
+        <div class="row" *ngFor="let product of products; let i = index">
             <div class="img-container">
                 <img [src]="product.product.imageUrl">
             </div>
@@ -18,8 +18,13 @@
                 <p>{{ product.amount }} in cart</p>
                 <span class="add" (click)="updateAmount(product.product.id, 1)">+</span>
             </div>
-            <p class="price">$ {{ product.product.price }}</p>
+            <p class="price">$ {{ currentTotal(i) }}</p>
+        </div>
+        <div class="row">
+            <button class="clear" (click)="clearShoppingCart()">Clear Shopping Cart</button>
+            <div class="div"></div>
+            <div class="div"></div>
+            <p class="total-price">$ {{ totalPrice() }}</p>
         </div>
     </div>
-    <button class="clear">Clear Shopping Cart</button>
 </div>
