@@ -1,20 +1,23 @@
 <div class="container" *ngIf="currentProduct">
-    <form class="container__left">
+    <form class="container__left" [formGroup]="form">
         <div class="form-control">
             <label for="title">Title</label>
-            <input id="title" type="text">
+            <input id="title" type="text"  formControlName="title">
         </div>
         <div class="form-control">
             <label for="price">Price</label>
-            <input id="price" type="text">
+            <input id="price" type="text" formControlName="price">
         </div>
         <div class="form-control">
             <label for="category">Category</label>
-            <input id="category" type="text">
+            <select id="category" formControlName="category" (click)="fetchCategories()">
+                <option selected value="{{ currentProduct.category }}">{{ currentProduct.category }}</option>
+                <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+            </select>
         </div>
         <div class="form-control">
             <label for="imageurl">Image URL</label>
-            <input id="imageurl" type="text">
+            <input id="imageurl" type="text" formControlName="imageUrl">
         </div>
         <div class="form-control">
             <input type="submit" class="save" value="Save">
@@ -24,7 +27,7 @@
     <div class="container__right">
         <div class="img" [ngStyle]="{ 'background-image': 'url(' + currentProduct.imageUrl + ')'}">
         </div>
-        <p>Title</p>
-        <p>$250</p>
+        <p>{{ form.get('title')?.value }}</p>
+        <p>{{ form.get('price')?.value }}</p>
     </div>
 </div>
