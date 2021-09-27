@@ -3,7 +3,7 @@
         <li class="nav-list--item">0</li>
         <li class="nav-list--item"
         routerLink="shopping-cart"
-        >Shopping Cart</li>
+        >Shopping Cart <span class="cart-amount">{{ length }}</span></li>
         <li 
         *ngIf="!currentUser"
         class="nav-list--item"

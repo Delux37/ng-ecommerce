@@ -1,7 +1,7 @@
+import { CartService } from './services/cart.service';
 import { AuthUserModel } from './auth/auth.user.model';
-import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +12,18 @@ export class AppComponent implements OnInit {
   isDropdownShown = false;
   currentUser: AuthUserModel | null = null;
 
-  constructor(private authService: AuthService) {  }
+  // cartAmount
+  get length(): number {
+    return this.cartService.getLength();
+  }
+
+  constructor(private authService: AuthService,
+              private cartService: CartService
+      ) {  }
   ngOnInit() {
     this.authService.currentUser.subscribe(
       res => this.currentUser = res
     )
     this.authService.autoLogin();
-    
   };
 }

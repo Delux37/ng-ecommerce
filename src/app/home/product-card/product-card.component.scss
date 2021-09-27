@@ -26,6 +26,11 @@
         padding: 10px;
         border: none;
         border-radius: 3px;
+        transition: all .2s ease-in-out;
+        &:hover {
+            cursor: pointer;
+            color: #00539b;
+        }
     }
 
 }

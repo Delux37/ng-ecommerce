@@ -13,9 +13,7 @@
     </ul>
     <div class="products">
         <app-product-card *ngFor="let product of products"
-            [title] = "product.title"
-            [image] = "product.imageUrl"
-            [price] = "product.price"
+            [product] = "product"
         >
         </app-product-card>
     </div>

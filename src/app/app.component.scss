@@ -23,4 +23,15 @@
             }
         }
     }
+    .cart-amount{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: orange;
+        width: 24px;
+        height: 19px;
+        color: black;
+        border-radius: 30px;
+        font-size: 15px;
+    }
 }
