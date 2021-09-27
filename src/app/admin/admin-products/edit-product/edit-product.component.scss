@@ -37,14 +37,23 @@
                padding: 5px 10px;
                border-radius: 10px;
                color: #fff;
+               transition: all .2s ease-in-out;
                &:first-child {
                    margin-right: 10px;
                }
                &.save {
                 background-color: #5cb85c;
+                &:hover{
+                    cursor: pointer;
+                    background-color: #407e40;
+                }
                }
                &.edit {
                 background-color: #d9534f;
+                &:hover{
+                    cursor: pointer; 
+                    background-color: #863330;
+                }
                }
             }
         }

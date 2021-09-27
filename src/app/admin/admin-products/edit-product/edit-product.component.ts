@@ -5,7 +5,6 @@ import { ProductsService } from './../../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { switchMap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-product',
@@ -15,16 +14,15 @@ import { Observable } from 'rxjs';
 export class EditProductComponent implements OnInit {
   currentProduct!: Product;
   form!: FormGroup;
-
-  categories: string[] = []
-
+  categories: string[] = [];
+  
   constructor(
     private route: ActivatedRoute,
     private prod: ProductsService,
     private cat: CategoryService
-  ) {}
-
-  fetchCategories() {
+    ) {}
+    
+    fetchCategories() {
     if(!this.categories.length) {
       this.cat.fetchCategories()
       .subscribe(categories => this.categories = categories);
@@ -72,5 +70,9 @@ export class EditProductComponent implements OnInit {
     };
     this.prod.updateProduct(this.currentProduct.id!, product)
     .subscribe(res => console.log(res))
+  }
+
+  onDelete() {
+    this.prod.delete(this.currentProduct.id!);
   }
 }

@@ -37,4 +37,8 @@ export class ProductsService {
       ...product
     })
   }
+  delete(id: string) {
+    this.http.delete(environment.data + 'products/' + id + '.json')
+    .subscribe();
+  }
 }
