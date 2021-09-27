@@ -1,5 +1,5 @@
 <div class="container" *ngIf="currentProduct">
-    <form class="container__left" [formGroup]="form">
+    <form class="container__left" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-control">
             <label for="title">Title</label>
             <input id="title" type="text"  formControlName="title">

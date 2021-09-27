@@ -32,4 +32,9 @@ export class ProductsService {
       environment.data + 'products/' + id + '.json'
     );
   }
+  updateProduct(id: string, product: Product) {
+    return this.http.put(environment.data + 'products/' + id + '.json', {
+      ...product
+    })
+  }
 }

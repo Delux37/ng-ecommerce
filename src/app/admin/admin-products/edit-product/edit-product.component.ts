@@ -62,4 +62,15 @@ export class EditProductComponent implements OnInit {
         });
       });
   }
+
+  onSubmit() {
+    const product: Product = {
+      title: this.form.get('title')?.value,
+      price: this.form.get('price')?.value,
+      category: this.form.get('category')?.value,
+      imageUrl: this.form.get('imageUrl')?.value,
+    };
+    this.prod.updateProduct(this.currentProduct.id!, product)
+    .subscribe(res => console.log(res))
+  }
 }
