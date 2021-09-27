@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthAlertComponent } from './auth/auth-alert/auth-alert.component';
 import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinner.component';
+import { EditProductComponent } from './admin/admin-products/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinne
     DropdownComponent,
     SignupComponent,
     AuthAlertComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinne
       { path: 'order-succesful', component: OrderSuccesfulComponent },
       { path: 'auth/login', component:  LoginComponent},
       { path: 'auth/signup', component:  SignupComponent}, 
-      { path: 'admin/products', component:  AdminProductsComponent},
+      { path: 'admin/products', component:  AdminProductsComponent, },
+      { path: 'admin/products/:id', component: EditProductComponent, },
       { path: 'admin/orders', component:  AdminOrdersComponent},
     ]),
   ],

@@ -10,7 +10,7 @@
             <div class="col">{{ i + 1 }}</div>
             <div class="col">{{ product.title }}</div>
             <div class="col">${{ product.price }}</div>
-            <div class="col edit-btn">edit</div>
+            <div class="col edit-btn" [routerLink]="product.id">edit</div>
         </div>
     </div>
     <!-- <table class="table">
