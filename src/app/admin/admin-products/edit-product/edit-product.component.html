@@ -1,1 +1,30 @@
-<p>edit-product works!</p>
+<div class="container" *ngIf="currentProduct">
+    <form class="container__left">
+        <div class="form-control">
+            <label for="title">Title</label>
+            <input id="title" type="text">
+        </div>
+        <div class="form-control">
+            <label for="price">Price</label>
+            <input id="price" type="text">
+        </div>
+        <div class="form-control">
+            <label for="category">Category</label>
+            <input id="category" type="text">
+        </div>
+        <div class="form-control">
+            <label for="imageurl">Image URL</label>
+            <input id="imageurl" type="text">
+        </div>
+        <div class="form-control">
+            <input type="submit" class="save" value="Save">
+            <input type="button" class="edit" value="Delete">
+        </div>
+    </form>
+    <div class="container__right">
+        <div class="img" [ngStyle]="{ 'background-image': 'url(' + currentProduct.imageUrl + ')'}">
+        </div>
+        <p>Title</p>
+        <p>$250</p>
+    </div>
+</div>
