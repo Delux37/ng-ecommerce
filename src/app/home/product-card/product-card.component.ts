@@ -19,4 +19,13 @@ export class ProductCardComponent implements OnInit {
   addToCart() {
     this.cartService.addProducts(this.product);
   }
+  getAmount(): number {
+    const id = this.product.id ? this.product.id : '';
+    return this.cartService.checkAmount(id);
+  }
+
+  updateAmount(amount: number) {
+    const id = this.product.id ? this.product.id : '';
+    this.cartService.updateAmount(this.product.id, amount); 
+  }
 }

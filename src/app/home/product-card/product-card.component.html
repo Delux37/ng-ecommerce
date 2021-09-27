@@ -6,5 +6,12 @@
         <p>{{ product.title }}</p>
         <p>$ {{ product.price }}</p>
     </div>
-    <button (click)="addToCart()">Add to cart</button>
+    <button (click)="addToCart()" *ngIf="getAmount() == 0; else quantity">Add to cart</button>
+    <ng-template #quantity>
+    <div class="quantity">
+        <span class="remove" (click)="updateAmount(-1)">-</span>
+        <p>{{ getAmount() }} in cart</p>
+        <span class="add" (click)="updateAmount(1)">+</span>
+    </div>
+    </ng-template>
 </div>

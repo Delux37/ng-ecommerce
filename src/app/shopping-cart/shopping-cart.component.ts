@@ -12,8 +12,8 @@ export class ShoppingCartComponent implements OnInit {
     return this.cartService.cartProducts;
   }
 
-  updateAmount(id: string | undefined, amount: number, index: number) {
-    this.cartService.updateAmount(id, amount, index); 
+  updateAmount(id: string | undefined, amount: number) {
+    this.cartService.updateAmount(id, amount); 
   }
 
   totalItems: number = this.cartService.getLength();

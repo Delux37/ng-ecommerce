@@ -22,15 +22,18 @@ export class CartService {
   getLength() {
     return this.cartProducts.map(res => res.amount).reduce((acc, curr) => acc + curr, 0);
   }
-  updateAmount(id: string | undefined, amount: number, index: number) {
-    const curr = this.cartProducts.find(p => p.product.id === id);    
-    if(curr) {
+  updateAmount(id: string | undefined, amount: number) {
+    const curr = this.cartProducts.find(p => p.product.id === id);
+    if(curr){
       curr.amount += amount;
-      if(curr.amount <= 0) {
-        this.cartProducts.splice(index,1);
+      if(curr.amount <= 0){
+        this.cartProducts.splice(this.cartProducts.indexOf(curr), 1)
       }
     }
-
+  }
+  checkAmount(id: string ) {
+    const prod = this.cartProducts.find(p => p.product.id === id);
+    return prod ? prod.amount : 0;
   }
   
 }

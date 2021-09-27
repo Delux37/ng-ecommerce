@@ -8,15 +8,15 @@
             <div>Quantity</div>
             <div>Price</div>
         </div>
-        <div class="row" *ngFor="let product of products; let i = index">
+        <div class="row" *ngFor="let product of products">
             <div class="img-container">
                 <img [src]="product.product.imageUrl">
             </div>
             <h2 class="product-title">{{ product.product.title }}</h2>
             <div class="quantity">
-                <span class="remove" (click)="updateAmount(product.product.id, -1, i)">-</span>
+                <span class="remove" (click)="updateAmount(product.product.id, -1)">-</span>
                 <p>{{ product.amount }} in cart</p>
-                <span class="add" (click)="updateAmount(product.product.id, 1, i)">+</span>
+                <span class="add" (click)="updateAmount(product.product.id, 1)">+</span>
             </div>
             <p class="price">$ {{ product.product.price }}</p>
         </div>
