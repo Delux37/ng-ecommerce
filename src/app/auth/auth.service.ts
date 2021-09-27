@@ -1,5 +1,5 @@
 import { AuthUserModel } from './auth.user.model';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../models/user.model';

@@ -1,3 +1,5 @@
+import { Product } from './../../models/product.model';
+import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit {
-
-  constructor() { }
+  products: Product[] = [];
+  constructor(private cat: ProductsService) { }
 
   ngOnInit(): void {
+    this.cat.fetchProducts().subscribe(products => this.products = products);
   }
 
 }

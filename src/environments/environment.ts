@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   signup: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyADYnuhLi1uCGchLMpNylLu9uaAAE-X36U',
   login: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyADYnuhLi1uCGchLMpNylLu9uaAAE-X36U',
-  firebase: 'https://e-commerce-90815-default-rtdb.firebaseio.com/'
+  firebase: 'https://e-commerce-90815-default-rtdb.firebaseio.com/',
+  data: 'https://e-commerce-90815-default-rtdb.firebaseio.com/'
 };
 
 /*

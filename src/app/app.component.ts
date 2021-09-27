@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe(
       res => this.currentUser = res
-      )
-    
+    )
     this.authService.autoLogin();
+    
   };
 }

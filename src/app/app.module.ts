@@ -50,8 +50,7 @@ import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinne
       { path: 'auth/signup', component:  SignupComponent}, 
       { path: 'admin/products', component:  AdminProductsComponent},
       { path: 'admin/orders', component:  AdminOrdersComponent},
-
-    ])
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

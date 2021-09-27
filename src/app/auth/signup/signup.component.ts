@@ -31,14 +31,14 @@ export class SignupComponent implements OnInit {
     if(this.form.valid) {
       this.authService.onSignup({
           email: this.form.get('email')?.value,
-          password: this.form.get('password')?.value
+          password: this.form.get('pass-group.password')?.value
         }
       ).subscribe(
-        res => {
-          console.log(res);
+        _ => {
           this.isLoading = false;
           this.showAlert = true;
           this.formStatus = { message: 'Succesfully registered', status: 'success' }
+          this.form.reset();
         },
         _ => {
           this.isLoading = false;
