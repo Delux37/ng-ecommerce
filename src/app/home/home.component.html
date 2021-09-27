@@ -1,10 +1,18 @@
 <div class="container">
     <ul class="filter-bar">
-        <li>All categories</li>
-        <li *ngFor="let category of categories$ | async">{{ category }}</li>
+        <li
+            [ngClass]="{ active: activatedRoute == 'all' }"
+            (click)="filterByCat('')"
+            class="active"
+        >All categories</li>
+        <li 
+        *ngFor="let category of categories$ | async"
+        (click) = "filterByCat(category)"
+        [ngClass]="{ 'active': activatedRoute == category }"
+        >{{ category }}</li>
     </ul>
     <div class="products">
-        <app-product-card *ngFor="let product of products$ | async"
+        <app-product-card *ngFor="let product of products"
             [title] = "product.title"
             [image] = "product.imageUrl"
             [price] = "product.price"
