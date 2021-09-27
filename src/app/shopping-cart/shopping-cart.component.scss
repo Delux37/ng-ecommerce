@@ -1,0 +1,88 @@
+.container {
+    width: 80%;
+    margin: 30px auto;
+    font-family: 'Lato', sans-serif;
+    color: #333333;
+    .title{
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+
+    .amount {
+        font-weight: bold;
+    }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            &:first-child{
+                justify-items: center;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'Lato', sans-serif;
+                margin-bottom: 5px;
+            }
+            .img-container {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .product-title{
+                font-size: 22px;
+            }
+            .quantity {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                p {
+                    font-size: 18px;
+                    font-family: 'Lato', sans-serif;
+                }
+                span {
+                    padding: 15px;
+                    background-color: gray;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-size: 18px;
+                    transition: all .2s ease-in-out;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(73, 73, 73);
+                    }
+                }
+            }
+            .price {
+                text-align: center;
+                font-family: 'Lato', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+            }
+        
+        }
+    }
+    .clear{
+        border: none;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 16px;
+        background-color: #d9534f;
+        transition: all .2s ease-in-out;
+        &:hover{
+            cursor: pointer; 
+            background-color: #863330;
+        }
+    }
+}

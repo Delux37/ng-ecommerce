@@ -22,5 +22,15 @@ export class CartService {
   getLength() {
     return this.cartProducts.map(res => res.amount).reduce((acc, curr) => acc + curr, 0);
   }
+  updateAmount(id: string | undefined, amount: number, index: number) {
+    const curr = this.cartProducts.find(p => p.product.id === id);    
+    if(curr) {
+      curr.amount += amount;
+      if(curr.amount <= 0) {
+        this.cartProducts.splice(index,1);
+      }
+    }
+
+  }
   
 }

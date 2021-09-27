@@ -1,1 +1,25 @@
-<p>shopping-cart works!</p>
+<div class="container">
+    <h1 class="title">Shopping Cart</h1>
+    <p class="amount">You have {{ totalItems }} items in your cart</p>
+    <div class="table">
+        <div class="row">
+            <div></div>
+            <div>Product</div>
+            <div>Quantity</div>
+            <div>Price</div>
+        </div>
+        <div class="row" *ngFor="let product of products; let i = index">
+            <div class="img-container">
+                <img [src]="product.product.imageUrl">
+            </div>
+            <h2 class="product-title">{{ product.product.title }}</h2>
+            <div class="quantity">
+                <span class="remove" (click)="updateAmount(product.product.id, -1, i)">-</span>
+                <p>{{ product.amount }} in cart</p>
+                <span class="add" (click)="updateAmount(product.product.id, 1, i)">+</span>
+            </div>
+            <p class="price">$ {{ product.product.price }}</p>
+        </div>
+    </div>
+    <button class="clear">Clear Shopping Cart</button>
+</div>
