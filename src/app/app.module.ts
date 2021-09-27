@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccesfulComponent } from './order-succesful/order-succesful.component';
@@ -19,12 +18,12 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthAlertComponent } from './auth/auth-alert/auth-alert.component';
 import { LoadingSpinnerComponent } from './common/loading-spinner/loading-spinner.component';
 import { EditProductComponent } from './admin/admin-products/edit-product/edit-product.component';
+import { ProductCardComponent } from './home/product-card/product-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
     OrderSuccesfulComponent,
@@ -36,7 +35,8 @@ import { EditProductComponent } from './admin/admin-products/edit-product/edit-p
     SignupComponent,
     AuthAlertComponent,
     LoadingSpinnerComponent,
-    EditProductComponent
+    EditProductComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,6 @@ import { EditProductComponent } from './admin/admin-products/edit-product/edit-p
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'check-out', component: CheckOutComponent },
       { path: 'order-succesful', component: OrderSuccesfulComponent },

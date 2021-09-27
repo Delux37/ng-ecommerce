@@ -1,0 +1,14 @@
+<div class="container">
+    <ul class="filter-bar">
+        <li>All categories</li>
+        <li *ngFor="let category of categories$ | async">{{ category }}</li>
+    </ul>
+    <div class="products">
+        <app-product-card *ngFor="let product of products$ | async"
+            [title] = "product.title"
+            [image] = "product.imageUrl"
+            [price] = "product.price"
+        >
+        </app-product-card>
+    </div>
+</div>

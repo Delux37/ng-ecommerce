@@ -1,0 +1,41 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    .filter-bar {
+        list-style: none;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        width: 250px;
+        height: fit-content;
+        border-radius: 5px;
+        overflow: hidden;
+
+        li {
+            &:first-child{
+                background-color: #0275d8;
+                color: #fff;
+            }
+            &:not(:last-of-type) {
+                border-bottom:1px solid  rgba(128, 128, 128, 0.3);
+            }
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            transition: all .2s ease-in-out;
+            &:hover{
+                cursor: pointer;
+                background-color: #0275d8;
+                color: #fff;
+            }
+        }
+    }   
+    .products {
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 20px;
+        column-gap: 20px;
+    }
+}
