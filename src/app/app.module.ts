@@ -44,9 +44,10 @@ import { ProductCardComponent } from './home/product-card/product-card.component
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'my-orders', component: MyOrdersComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'check-out', component: CheckOutComponent },
-      { path: 'order-succesful', component: OrderSuccesfulComponent },
+      { path: 'order-succesful/:id', component: OrderSuccesfulComponent },
       { path: 'auth/login', component:  LoginComponent},
       { path: 'auth/signup', component:  SignupComponent}, 
       { path: 'admin/products', component:  AdminProductsComponent, },

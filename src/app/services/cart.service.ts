@@ -35,5 +35,14 @@ export class CartService {
     const prod = this.cartProducts.find(p => p.product.id === id);
     return prod ? prod.amount : 0;
   }
+  totalPrice(): number {
+    return this.cartProducts.map(p => p.product.price * p.amount).reduce((acc, curr) => acc + curr, 0);
+  }
+  totalAmount(): number{
+    return this.cartProducts.map(p => p.amount).reduce((acc, curr) => acc + curr, 0);
+  }
+  clearCart(): void {
+    this.cartProducts.splice(0, this.cartProducts.length);
+  }
   
 }

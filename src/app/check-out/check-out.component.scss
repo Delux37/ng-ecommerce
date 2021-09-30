@@ -1,0 +1,49 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    padding: 30px;
+    .address {
+        .form-control {
+            display: flex;
+            flex-direction: column;
+            &:not(:last-child){
+                margin-bottom: 20px;
+            }
+            input {
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid gray;
+            }
+            input[type="submit"]{
+                background-color: #0275d8;
+                color: #fff;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                width: fit-content;
+                padding: 5px 10px;
+                &:hover{
+                    cursor: pointer;
+                    background-color: #00539b;
+                }
+            }
+        }
+    }
+    .shopping-info {
+        padding: 20px;
+        border: 1px solid gray;
+        ul {
+            list-style: none;
+            li {
+                padding: 10px;
+                &:first-child{
+                    border-top: 1px solid gray;
+                }
+                &:not(:last-child){
+                    border-bottom: 1px solid gray;
+                }
+            }
+        }
+    }
+}

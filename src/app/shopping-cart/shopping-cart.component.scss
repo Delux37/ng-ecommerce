@@ -77,6 +77,19 @@
                 font-weight: bold;
                 font-size: 16px;
             }
+            .checkout {
+                padding: 10px 0;
+                background-color: #0275d8;
+                color: #fff;
+                font-family: inherit;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                &:hover{
+                    cursor: pointer;
+                    background-color: #00539b;
+                }
+            }
         }
     }
     .clear{

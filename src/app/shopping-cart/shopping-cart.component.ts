@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ShoppingCartComponent {
   constructor(private cartService: CartService) { }
+
   get products() {
     return this.cartService.cartProducts;
   }
-
   get totalItems (): number {
      return this.cartService.getLength();
   } 
@@ -21,7 +21,7 @@ export class ShoppingCartComponent {
   }
 
   totalPrice(): number {
-    return this.cartService.cartProducts.map(p => p.product.price * p.amount).reduce((acc, curr) => acc + curr, 0);
+    return this.cartService.totalPrice();
   }
 
   currentTotal(i: number): number {
@@ -29,9 +29,6 @@ export class ShoppingCartComponent {
   }
 
   clearShoppingCart() {
-    this.cartService.cartProducts.splice(0, this.cartService.cartProducts.length);
+    this.cartService.clearCart();
   }
-
-  
-
 }

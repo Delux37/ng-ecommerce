@@ -1,6 +1,6 @@
 import { AuthUserModel } from './auth.user.model';
-import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
-import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable,  throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
@@ -29,7 +29,7 @@ interface responseData {
   providedIn: 'root',
 })
 export class AuthService {
-  private $currentUser = new Subject<AuthUserModel | null>();
+  private $currentUser = new BehaviorSubject<AuthUserModel | null>(null);
   currentUser = this.$currentUser.asObservable();
 
   logoutTimer: any;
