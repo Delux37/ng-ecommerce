@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+    .table{
+        .row{
+            display: grid;
+            grid-template-columns: 1fr 3fr 3fr 3fr;
+            .col{
+                padding: 5px 10px;
+                border: .5px solid rgba(128, 128, 128, 0.5);
+                &:first-child{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .edit-btn{ 
+                color: rgb(41, 129, 212);
+                transition: all .3s ease-in-out;
+                &:hover{
+                    cursor: pointer;
+                    color: rgb(27, 86, 141);
+                }
+            }
+        }
+    }
+}

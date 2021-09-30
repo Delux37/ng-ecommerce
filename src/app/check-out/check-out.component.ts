@@ -47,6 +47,7 @@ export class CheckOutComponent implements OnInit {
           address1: this.form.get('address1')?.value,
           address2: this.form.get('address2')?.value,
           city: this.form.get('city')?.value,
+          date: new Date(),
           purchased: this.cartItems
         })
       )

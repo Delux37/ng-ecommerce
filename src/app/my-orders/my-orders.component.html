@@ -1,1 +1,14 @@
-<p>my-orders works!</p>
+<div class="container">
+    <div class="table">
+        <div class="row">
+            <div class="col">Customer</div>
+            <div class="col">Date</div>
+            <div class="col"></div>
+        </div>
+        <div class="row" *ngFor="let order of orders">
+            <div class="col">{{ order.name }}</div>
+            <div class="col">{{ order.date | date}}</div>
+            <div class="col edit-btn">View</div>
+        </div>
+    </div>
+</div>

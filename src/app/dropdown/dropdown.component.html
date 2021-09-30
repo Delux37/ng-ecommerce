@@ -1,8 +1,8 @@
 <div class="dropdown">
     <ul class="dropdown_list">
         <li class="dropdown_list--item" routerLink="my-orders">My Orders</li>
-        <li class="dropdown_list--item" *ngIf="isAdmin">Manage Orders</li>
-        <li class="dropdown_list--item" *ngIf="isAdmin">Manage Products</li>
+        <li class="dropdown_list--item" routerLink="admin/products" *ngIf="isAdmin">Manage Products</li>
+        <li class="dropdown_list--item" routerLink="admin/orders" *ngIf="isAdmin">Manage Orders</li>
         <li class="dropdown_list--item" (click)="onLogout()">Log Out</li>
    </ul>
 </div>

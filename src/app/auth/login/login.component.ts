@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   showAlert: boolean = false;
   formStatus!: { message: string, status: 'success' | 'danger' };
  
-  constructor(private authService: AuthService) {  }
+  constructor(private authService: AuthService, private router: Router) {  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
             res.isAdmin
           )
           this.form.reset();
+          this.router.navigate(['/']);
         },
         (errorMessage: string) => {
           this.showAlert = true;
